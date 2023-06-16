@@ -16,12 +16,14 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
+        //*original path
+        // template: "./src/index.html",
+        template: "./index.html",
         filename: "index.html",
       }),
       new InjectManifest({
-        swSrc: "./src/sw.js",
-        swDest: "sw.js",
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
         name: "Just another Text Editor",
@@ -29,12 +31,13 @@ module.exports = () => {
         description: "A text editor PWA",
         background_color: "#ffffff",
         theme_color: "#000000",
-        start_url: "/",
+        // start_url: "/",
+        start_url: "./",
         icons: [
           {
-            src: path.resolve("src/assets/icons/icon.png"),
+            src: path.resolve("./src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: "icons",
+            destination: path.join("assets", "icons"),
           },
         ],
       }),
